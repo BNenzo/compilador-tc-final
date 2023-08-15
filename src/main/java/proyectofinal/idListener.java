@@ -20,6 +20,16 @@ public interface idListener extends ParseTreeListener {
 	 */
 	void exitTypes(idParser.TypesContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link idParser#typesFunciones}.
+	 * @param ctx the parse tree
+	 */
+	void enterTypesFunciones(idParser.TypesFuncionesContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link idParser#typesFunciones}.
+	 * @param ctx the parse tree
+	 */
+	void exitTypesFunciones(idParser.TypesFuncionesContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link idParser#s}.
 	 * @param ctx the parse tree
 	 */
@@ -129,4 +139,24 @@ public interface idListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitOperadoresNumericos(idParser.OperadoresNumericosContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link idParser#declaracionFuncion}.
+	 * @param ctx the parse tree
+	 */
+	void enterDeclaracionFuncion(idParser.DeclaracionFuncionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link idParser#declaracionFuncion}.
+	 * @param ctx the parse tree
+	 */
+	void exitDeclaracionFuncion(idParser.DeclaracionFuncionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link idParser#parametrosFuncion}.
+	 * @param ctx the parse tree
+	 */
+	void enterParametrosFuncion(idParser.ParametrosFuncionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link idParser#parametrosFuncion}.
+	 * @param ctx the parse tree
+	 */
+	void exitParametrosFuncion(idParser.ParametrosFuncionContext ctx);
 }

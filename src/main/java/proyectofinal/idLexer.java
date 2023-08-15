@@ -19,8 +19,9 @@ public class idLexer extends Lexer {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		WS=1, LLAVEA=2, LLAVEC=3, PUNTOCOMA=4, COMA=5, INT=6, FLOAT=7, CHAR=8, 
-		SUMA=9, RESTA=10, MULTIPLICACION=11, DIVISION=12, EQ=13, PALABRA=14;
+		WS=1, LLAVEA=2, LLAVEC=3, PARENTESISA=4, PARENTESISC=5, PUNTOCOMA=6, COMA=7, 
+		INT=8, FLOAT=9, CHAR=10, VOID=11, SUMA=12, RESTA=13, MULTIPLICACION=14, 
+		DIVISION=15, EQ=16, PALABRA=17;
 	public static String[] channelNames = {
 		"DEFAULT_TOKEN_CHANNEL", "HIDDEN"
 	};
@@ -31,24 +32,25 @@ public class idLexer extends Lexer {
 
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"LETRA", "DIGITO", "WS", "LLAVEA", "LLAVEC", "PUNTOCOMA", "COMA", "INT", 
-			"FLOAT", "CHAR", "SUMA", "RESTA", "MULTIPLICACION", "DIVISION", "EQ", 
-			"PALABRA"
+			"LETRA", "DIGITO", "WS", "LLAVEA", "LLAVEC", "PARENTESISA", "PARENTESISC", 
+			"PUNTOCOMA", "COMA", "INT", "FLOAT", "CHAR", "VOID", "SUMA", "RESTA", 
+			"MULTIPLICACION", "DIVISION", "EQ", "PALABRA"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, null, "'{'", "'}'", "';'", "','", "'int'", "'float'", "'char'", 
-			"'+'", "'-'", "'*'", "'/'", "'='"
+			null, null, "'{'", "'}'", "'('", "')'", "';'", "','", "'int'", "'float'", 
+			"'char'", "'void'", "'+'", "'-'", "'*'", "'/'", "'='"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, "WS", "LLAVEA", "LLAVEC", "PUNTOCOMA", "COMA", "INT", "FLOAT", 
-			"CHAR", "SUMA", "RESTA", "MULTIPLICACION", "DIVISION", "EQ", "PALABRA"
+			null, "WS", "LLAVEA", "LLAVEC", "PARENTESISA", "PARENTESISC", "PUNTOCOMA", 
+			"COMA", "INT", "FLOAT", "CHAR", "VOID", "SUMA", "RESTA", "MULTIPLICACION", 
+			"DIVISION", "EQ", "PALABRA"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -110,28 +112,32 @@ public class idLexer extends Lexer {
 	public ATN getATN() { return _ATN; }
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\2\20V\b\1\4\2\t\2\4"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\2\23e\b\1\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
-		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\3\2\3\2\3"+
-		"\3\3\3\3\4\6\4)\n\4\r\4\16\4*\3\4\3\4\3\5\3\5\3\6\3\6\3\7\3\7\3\b\3\b"+
-		"\3\t\3\t\3\t\3\t\3\n\3\n\3\n\3\n\3\n\3\n\3\13\3\13\3\13\3\13\3\13\3\f"+
-		"\3\f\3\r\3\r\3\16\3\16\3\17\3\17\3\20\3\20\3\21\3\21\7\21R\n\21\f\21\16"+
-		"\21U\13\21\2\2\22\3\2\5\2\7\3\t\4\13\5\r\6\17\7\21\b\23\t\25\n\27\13\31"+
-		"\f\33\r\35\16\37\17!\20\3\2\5\4\2C\\c|\3\2\62;\5\2\13\f\17\17\"\"\2V\2"+
-		"\7\3\2\2\2\2\t\3\2\2\2\2\13\3\2\2\2\2\r\3\2\2\2\2\17\3\2\2\2\2\21\3\2"+
-		"\2\2\2\23\3\2\2\2\2\25\3\2\2\2\2\27\3\2\2\2\2\31\3\2\2\2\2\33\3\2\2\2"+
-		"\2\35\3\2\2\2\2\37\3\2\2\2\2!\3\2\2\2\3#\3\2\2\2\5%\3\2\2\2\7(\3\2\2\2"+
-		"\t.\3\2\2\2\13\60\3\2\2\2\r\62\3\2\2\2\17\64\3\2\2\2\21\66\3\2\2\2\23"+
-		":\3\2\2\2\25@\3\2\2\2\27E\3\2\2\2\31G\3\2\2\2\33I\3\2\2\2\35K\3\2\2\2"+
-		"\37M\3\2\2\2!S\3\2\2\2#$\t\2\2\2$\4\3\2\2\2%&\t\3\2\2&\6\3\2\2\2\')\t"+
-		"\4\2\2(\'\3\2\2\2)*\3\2\2\2*(\3\2\2\2*+\3\2\2\2+,\3\2\2\2,-\b\4\2\2-\b"+
-		"\3\2\2\2./\7}\2\2/\n\3\2\2\2\60\61\7\177\2\2\61\f\3\2\2\2\62\63\7=\2\2"+
-		"\63\16\3\2\2\2\64\65\7.\2\2\65\20\3\2\2\2\66\67\7k\2\2\678\7p\2\289\7"+
-		"v\2\29\22\3\2\2\2:;\7h\2\2;<\7n\2\2<=\7q\2\2=>\7c\2\2>?\7v\2\2?\24\3\2"+
-		"\2\2@A\7e\2\2AB\7j\2\2BC\7c\2\2CD\7t\2\2D\26\3\2\2\2EF\7-\2\2F\30\3\2"+
-		"\2\2GH\7/\2\2H\32\3\2\2\2IJ\7,\2\2J\34\3\2\2\2KL\7\61\2\2L\36\3\2\2\2"+
-		"MN\7?\2\2N \3\2\2\2OR\5\3\2\2PR\5\5\3\2QO\3\2\2\2QP\3\2\2\2RU\3\2\2\2"+
-		"SQ\3\2\2\2ST\3\2\2\2T\"\3\2\2\2US\3\2\2\2\6\2*QS\3\b\2\2";
+		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
+		"\4\23\t\23\4\24\t\24\3\2\3\2\3\3\3\3\3\4\6\4/\n\4\r\4\16\4\60\3\4\3\4"+
+		"\3\5\3\5\3\6\3\6\3\7\3\7\3\b\3\b\3\t\3\t\3\n\3\n\3\13\3\13\3\13\3\13\3"+
+		"\f\3\f\3\f\3\f\3\f\3\f\3\r\3\r\3\r\3\r\3\r\3\16\3\16\3\16\3\16\3\16\3"+
+		"\17\3\17\3\20\3\20\3\21\3\21\3\22\3\22\3\23\3\23\3\24\3\24\7\24a\n\24"+
+		"\f\24\16\24d\13\24\2\2\25\3\2\5\2\7\3\t\4\13\5\r\6\17\7\21\b\23\t\25\n"+
+		"\27\13\31\f\33\r\35\16\37\17!\20#\21%\22\'\23\3\2\5\4\2C\\c|\3\2\62;\5"+
+		"\2\13\f\17\17\"\"\2e\2\7\3\2\2\2\2\t\3\2\2\2\2\13\3\2\2\2\2\r\3\2\2\2"+
+		"\2\17\3\2\2\2\2\21\3\2\2\2\2\23\3\2\2\2\2\25\3\2\2\2\2\27\3\2\2\2\2\31"+
+		"\3\2\2\2\2\33\3\2\2\2\2\35\3\2\2\2\2\37\3\2\2\2\2!\3\2\2\2\2#\3\2\2\2"+
+		"\2%\3\2\2\2\2\'\3\2\2\2\3)\3\2\2\2\5+\3\2\2\2\7.\3\2\2\2\t\64\3\2\2\2"+
+		"\13\66\3\2\2\2\r8\3\2\2\2\17:\3\2\2\2\21<\3\2\2\2\23>\3\2\2\2\25@\3\2"+
+		"\2\2\27D\3\2\2\2\31J\3\2\2\2\33O\3\2\2\2\35T\3\2\2\2\37V\3\2\2\2!X\3\2"+
+		"\2\2#Z\3\2\2\2%\\\3\2\2\2\'b\3\2\2\2)*\t\2\2\2*\4\3\2\2\2+,\t\3\2\2,\6"+
+		"\3\2\2\2-/\t\4\2\2.-\3\2\2\2/\60\3\2\2\2\60.\3\2\2\2\60\61\3\2\2\2\61"+
+		"\62\3\2\2\2\62\63\b\4\2\2\63\b\3\2\2\2\64\65\7}\2\2\65\n\3\2\2\2\66\67"+
+		"\7\177\2\2\67\f\3\2\2\289\7*\2\29\16\3\2\2\2:;\7+\2\2;\20\3\2\2\2<=\7"+
+		"=\2\2=\22\3\2\2\2>?\7.\2\2?\24\3\2\2\2@A\7k\2\2AB\7p\2\2BC\7v\2\2C\26"+
+		"\3\2\2\2DE\7h\2\2EF\7n\2\2FG\7q\2\2GH\7c\2\2HI\7v\2\2I\30\3\2\2\2JK\7"+
+		"e\2\2KL\7j\2\2LM\7c\2\2MN\7t\2\2N\32\3\2\2\2OP\7x\2\2PQ\7q\2\2QR\7k\2"+
+		"\2RS\7f\2\2S\34\3\2\2\2TU\7-\2\2U\36\3\2\2\2VW\7/\2\2W \3\2\2\2XY\7,\2"+
+		"\2Y\"\3\2\2\2Z[\7\61\2\2[$\3\2\2\2\\]\7?\2\2]&\3\2\2\2^a\5\3\2\2_a\5\5"+
+		"\3\2`^\3\2\2\2`_\3\2\2\2ad\3\2\2\2b`\3\2\2\2bc\3\2\2\2c(\3\2\2\2db\3\2"+
+		"\2\2\6\2\60`b\3\b\2\2";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

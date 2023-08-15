@@ -9,17 +9,21 @@ fragment DIGITO: [0-9];
 WS: [ \t\r\n]+ -> skip;
 LLAVEA: '{';
 LLAVEC: '}';
+PARENTESISA: '(';
+PARENTESISC: ')';
 PUNTOCOMA: ';';
 COMA: ',';
 INT: 'int';
 FLOAT: 'float';
 CHAR: 'char';
+VOID: 'void';
 SUMA: '+';
 RESTA: '-';
 MULTIPLICACION: '*';
 DIVISION: '/';
 EQ: '=';
 types: INT | FLOAT | CHAR;
+typesFunciones: types | VOID;
 PALABRA: (LETRA | DIGITO)*;
 
 //ID: (LETRA | '_') (LETRA | DIGITO | '_')*; OTRO: .;
@@ -32,7 +36,11 @@ s: instrucciones;
 
 instrucciones: instruccion instrucciones |;
 
-instruccion: bloque | declaracion | asignacion;
+instruccion:
+	bloque
+	| declaracion
+	| asignacion
+	| declaracionFuncion;
 
 bloque: LLAVEA instrucciones LLAVEC;
 
@@ -57,3 +65,12 @@ operaciones: operadoresNumericos PALABRA operaciones |;
 
 operadoresNumericos: SUMA | RESTA | MULTIPLICACION | DIVISION;
 
+// DECLARACION DE FUNCIONES
+
+declaracionFuncion:
+	typesFunciones PALABRA PARENTESISA parametrosFuncion PARENTESISC PUNTOCOMA;
+
+parametrosFuncion:
+	types PALABRA COMA parametrosFuncion
+	| types PALABRA
+	|;

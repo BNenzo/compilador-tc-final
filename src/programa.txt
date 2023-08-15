@@ -1,3 +1,6 @@
 {
-  ew = 2 + 3 +asd+ x ;
+  void laconchadetuti();
+  int probando2(int test, int ejemplo);
+    int probando2(int t, int ejemplo, int ejempl232);
+
 }

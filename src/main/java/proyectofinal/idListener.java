@@ -150,6 +150,16 @@ public interface idListener extends ParseTreeListener {
 	 */
 	void exitDeclaracionFuncion(idParser.DeclaracionFuncionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link idParser#parametrosDeclaracionConcatenados}.
+	 * @param ctx the parse tree
+	 */
+	void enterParametrosDeclaracionConcatenados(idParser.ParametrosDeclaracionConcatenadosContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link idParser#parametrosDeclaracionConcatenados}.
+	 * @param ctx the parse tree
+	 */
+	void exitParametrosDeclaracionConcatenados(idParser.ParametrosDeclaracionConcatenadosContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link idParser#parametrosFuncion}.
 	 * @param ctx the parse tree
 	 */
@@ -159,4 +169,44 @@ public interface idListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitParametrosFuncion(idParser.ParametrosFuncionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link idParser#llamadaFuncion}.
+	 * @param ctx the parse tree
+	 */
+	void enterLlamadaFuncion(idParser.LlamadaFuncionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link idParser#llamadaFuncion}.
+	 * @param ctx the parse tree
+	 */
+	void exitLlamadaFuncion(idParser.LlamadaFuncionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link idParser#parametrosLlamadaFuncion}.
+	 * @param ctx the parse tree
+	 */
+	void enterParametrosLlamadaFuncion(idParser.ParametrosLlamadaFuncionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link idParser#parametrosLlamadaFuncion}.
+	 * @param ctx the parse tree
+	 */
+	void exitParametrosLlamadaFuncion(idParser.ParametrosLlamadaFuncionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link idParser#parametrosConcatenados}.
+	 * @param ctx the parse tree
+	 */
+	void enterParametrosConcatenados(idParser.ParametrosConcatenadosContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link idParser#parametrosConcatenados}.
+	 * @param ctx the parse tree
+	 */
+	void exitParametrosConcatenados(idParser.ParametrosConcatenadosContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link idParser#defincionFuncion}.
+	 * @param ctx the parse tree
+	 */
+	void enterDefincionFuncion(idParser.DefincionFuncionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link idParser#defincionFuncion}.
+	 * @param ctx the parse tree
+	 */
+	void exitDefincionFuncion(idParser.DefincionFuncionContext ctx);
 }

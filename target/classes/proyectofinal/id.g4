@@ -40,7 +40,9 @@ instruccion:
 	bloque
 	| declaracion
 	| asignacion
-	| declaracionFuncion;
+	| declaracionFuncion
+	| llamadaFuncion
+	| defincionFuncion;
 
 bloque: LLAVEA instrucciones LLAVEC;
 
@@ -68,9 +70,25 @@ operadoresNumericos: SUMA | RESTA | MULTIPLICACION | DIVISION;
 // DECLARACION DE FUNCIONES
 
 declaracionFuncion:
-	typesFunciones PALABRA PARENTESISA parametrosFuncion PARENTESISC PUNTOCOMA;
+	typesFunciones PALABRA PARENTESISA parametrosDeclaracionConcatenados PARENTESISC PUNTOCOMA;
+
+parametrosDeclaracionConcatenados: parametrosFuncion |;
 
 parametrosFuncion:
 	types PALABRA COMA parametrosFuncion
-	| types PALABRA
-	|;
+	| types PALABRA;
+
+// LLAMADA DE FUNCIONES
+llamadaFuncion:
+	PALABRA PARENTESISA parametrosLlamadaFuncion PARENTESISC PUNTOCOMA;
+
+parametrosLlamadaFuncion: parametrosConcatenados |;
+
+parametrosConcatenados:
+	PALABRA COMA parametrosConcatenados
+	| PALABRA;
+
+// DEFINICION DE FUNCION
+defincionFuncion:
+	typesFunciones PALABRA PARENTESISA parametrosDeclaracionConcatenados PARENTESISC LLAVEA
+		instrucciones LLAVEC;

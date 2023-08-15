@@ -97,9 +97,39 @@ public interface idVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDeclaracionFuncion(idParser.DeclaracionFuncionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link idParser#parametrosDeclaracionConcatenados}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitParametrosDeclaracionConcatenados(idParser.ParametrosDeclaracionConcatenadosContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link idParser#parametrosFuncion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitParametrosFuncion(idParser.ParametrosFuncionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link idParser#llamadaFuncion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLlamadaFuncion(idParser.LlamadaFuncionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link idParser#parametrosLlamadaFuncion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitParametrosLlamadaFuncion(idParser.ParametrosLlamadaFuncionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link idParser#parametrosConcatenados}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitParametrosConcatenados(idParser.ParametrosConcatenadosContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link idParser#defincionFuncion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDefincionFuncion(idParser.DefincionFuncionContext ctx);
 }

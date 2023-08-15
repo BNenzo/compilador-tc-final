@@ -1,6 +1,7 @@
-{
-  void laconchadetuti();
-  int probando2(int test, int ejemplo);
-    int probando2(int t, int ejemplo, int ejempl232);
+
+
+
+void probando (int s, int sda) {
+  void probando3();
 
 }

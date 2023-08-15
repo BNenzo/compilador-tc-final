@@ -14,8 +14,11 @@ COMA: ',';
 INT: 'int';
 FLOAT: 'float';
 CHAR: 'char';
-
-ASIGNACION: '=';
+SUMA: '+';
+RESTA: '-';
+MULTIPLICACION: '*';
+DIVISION: '/';
+EQ: '=';
 types: INT | FLOAT | CHAR;
 PALABRA: (LETRA | DIGITO)*;
 
@@ -29,7 +32,7 @@ s: instrucciones;
 
 instrucciones: instruccion instrucciones |;
 
-instruccion: bloque | declaracion;
+instruccion: bloque | declaracion | asignacion;
 
 bloque: LLAVEA instrucciones LLAVEC;
 
@@ -39,9 +42,18 @@ declaracion: types declarar;
 declarar: declararAsignacion | declararSinAsignacion;
 
 declararAsignacion:
-	PALABRA ASIGNACION PALABRA COMA declarar
-	| PALABRA ASIGNACION PALABRA PUNTOCOMA;
+	PALABRA EQ PALABRA COMA declarar
+	| PALABRA EQ PALABRA PUNTOCOMA;
 
 declararSinAsignacion:
 	PALABRA COMA declarar
 	| PALABRA PUNTOCOMA;
+
+//ASIGNACION
+
+asignacion: PALABRA EQ PALABRA operaciones PUNTOCOMA;
+
+operaciones: operadoresNumericos PALABRA operaciones |;
+
+operadoresNumericos: SUMA | RESTA | MULTIPLICACION | DIVISION;
+

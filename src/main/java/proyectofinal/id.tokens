@@ -6,8 +6,12 @@ COMA=5
 INT=6
 FLOAT=7
 CHAR=8
-ASIGNACION=9
-PALABRA=10
+SUMA=9
+RESTA=10
+MULTIPLICACION=11
+DIVISION=12
+EQ=13
+PALABRA=14
 '{'=2
 '}'=3
 ';'=4
@@ -15,4 +19,8 @@ PALABRA=10
 'int'=6
 'float'=7
 'char'=8
-'='=9
+'+'=9
+'-'=10
+'*'=11
+'/'=12
+'='=13

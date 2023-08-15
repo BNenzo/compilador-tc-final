@@ -99,4 +99,34 @@ public interface idListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitDeclararSinAsignacion(idParser.DeclararSinAsignacionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link idParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void enterAsignacion(idParser.AsignacionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link idParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void exitAsignacion(idParser.AsignacionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link idParser#operaciones}.
+	 * @param ctx the parse tree
+	 */
+	void enterOperaciones(idParser.OperacionesContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link idParser#operaciones}.
+	 * @param ctx the parse tree
+	 */
+	void exitOperaciones(idParser.OperacionesContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link idParser#operadoresNumericos}.
+	 * @param ctx the parse tree
+	 */
+	void enterOperadoresNumericos(idParser.OperadoresNumericosContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link idParser#operadoresNumericos}.
+	 * @param ctx the parse tree
+	 */
+	void exitOperadoresNumericos(idParser.OperadoresNumericosContext ctx);
 }

@@ -66,4 +66,22 @@ public interface idVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitDeclararSinAsignacion(idParser.DeclararSinAsignacionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link idParser#asignacion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAsignacion(idParser.AsignacionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link idParser#operaciones}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOperaciones(idParser.OperacionesContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link idParser#operadoresNumericos}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOperadoresNumericos(idParser.OperadoresNumericosContext ctx);
 }

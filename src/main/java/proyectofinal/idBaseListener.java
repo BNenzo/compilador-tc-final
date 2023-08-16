@@ -102,13 +102,13 @@ public class idBaseListener implements idListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCondiciones(idParser.CondicionesContext ctx) { }
+	@Override public void enterOperacionesaritlogicas(idParser.OperacionesaritlogicasContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCondiciones(idParser.CondicionesContext ctx) { }
+	@Override public void exitOperacionesaritlogicas(idParser.OperacionesaritlogicasContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

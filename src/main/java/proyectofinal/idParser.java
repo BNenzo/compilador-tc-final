@@ -25,7 +25,7 @@ public class idParser extends Parser {
 		ITERACIONSUMA=23, ITERACIONRESTA=24;
 	public static final int
 		RULE_types = 0, RULE_typesFunciones = 1, RULE_s = 2, RULE_instrucciones = 3, 
-		RULE_instruccion = 4, RULE_bloque = 5, RULE_iif = 6, RULE_condiciones = 7, 
+		RULE_instruccion = 4, RULE_bloque = 5, RULE_iif = 6, RULE_operacionesaritlogicas = 7, 
 		RULE_iwhile = 8, RULE_ifor = 9, RULE_iteracion = 10, RULE_declaracion = 11, 
 		RULE_declarar = 12, RULE_declararAsignacion = 13, RULE_declararSinAsignacion = 14, 
 		RULE_asignacion = 15, RULE_operaciones = 16, RULE_operadoresNumericos = 17, 
@@ -35,9 +35,9 @@ public class idParser extends Parser {
 	private static String[] makeRuleNames() {
 		return new String[] {
 			"types", "typesFunciones", "s", "instrucciones", "instruccion", "bloque", 
-			"iif", "condiciones", "iwhile", "ifor", "iteracion", "declaracion", "declarar", 
-			"declararAsignacion", "declararSinAsignacion", "asignacion", "operaciones", 
-			"operadoresNumericos", "declaracionFuncion", "parametrosDeclaracionConcatenados", 
+			"iif", "operacionesaritlogicas", "iwhile", "ifor", "iteracion", "declaracion", 
+			"declarar", "declararAsignacion", "declararSinAsignacion", "asignacion", 
+			"operaciones", "operadoresNumericos", "declaracionFuncion", "parametrosDeclaracionConcatenados", 
 			"parametrosFuncion", "llamadaFuncion", "parametrosLlamadaFuncion", "parametrosConcatenados", 
 			"defincionFuncion"
 		};
@@ -348,8 +348,8 @@ public class idParser extends Parser {
 		public IifContext iif() {
 			return getRuleContext(IifContext.class,0);
 		}
-		public CondicionesContext condiciones() {
-			return getRuleContext(CondicionesContext.class,0);
+		public OperacionesaritlogicasContext operacionesaritlogicas() {
+			return getRuleContext(OperacionesaritlogicasContext.class,0);
 		}
 		public DeclaracionContext declaracion() {
 			return getRuleContext(DeclaracionContext.class,0);
@@ -416,7 +416,7 @@ public class idParser extends Parser {
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(66);
-				condiciones();
+				operacionesaritlogicas();
 				}
 				break;
 			case 4:
@@ -534,8 +534,8 @@ public class idParser extends Parser {
 	public static class IifContext extends ParserRuleContext {
 		public TerminalNode IFF() { return getToken(idParser.IFF, 0); }
 		public TerminalNode PARENTESISA() { return getToken(idParser.PARENTESISA, 0); }
-		public CondicionesContext condiciones() {
-			return getRuleContext(CondicionesContext.class,0);
+		public OperacionesaritlogicasContext operacionesaritlogicas() {
+			return getRuleContext(OperacionesaritlogicasContext.class,0);
 		}
 		public TerminalNode PARENTESISC() { return getToken(idParser.PARENTESISC, 0); }
 		public BloqueContext bloque() {
@@ -571,7 +571,7 @@ public class idParser extends Parser {
 			setState(81);
 			match(PARENTESISA);
 			setState(82);
-			condiciones();
+			operacionesaritlogicas();
 			setState(83);
 			match(PARENTESISC);
 			setState(84);
@@ -589,38 +589,38 @@ public class idParser extends Parser {
 		return _localctx;
 	}
 
-	public static class CondicionesContext extends ParserRuleContext {
+	public static class OperacionesaritlogicasContext extends ParserRuleContext {
 		public List<TerminalNode> PALABRA() { return getTokens(idParser.PALABRA); }
 		public TerminalNode PALABRA(int i) {
 			return getToken(idParser.PALABRA, i);
 		}
 		public TerminalNode COMP() { return getToken(idParser.COMP, 0); }
 		public TerminalNode OPERADORLOGICO() { return getToken(idParser.OPERADORLOGICO, 0); }
-		public CondicionesContext condiciones() {
-			return getRuleContext(CondicionesContext.class,0);
+		public OperacionesaritlogicasContext operacionesaritlogicas() {
+			return getRuleContext(OperacionesaritlogicasContext.class,0);
 		}
-		public CondicionesContext(ParserRuleContext parent, int invokingState) {
+		public OperacionesaritlogicasContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_condiciones; }
+		@Override public int getRuleIndex() { return RULE_operacionesaritlogicas; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof idListener ) ((idListener)listener).enterCondiciones(this);
+			if ( listener instanceof idListener ) ((idListener)listener).enterOperacionesaritlogicas(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof idListener ) ((idListener)listener).exitCondiciones(this);
+			if ( listener instanceof idListener ) ((idListener)listener).exitOperacionesaritlogicas(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof idVisitor ) return ((idVisitor<? extends T>)visitor).visitCondiciones(this);
+			if ( visitor instanceof idVisitor ) return ((idVisitor<? extends T>)visitor).visitOperacionesaritlogicas(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final CondicionesContext condiciones() throws RecognitionException {
-		CondicionesContext _localctx = new CondicionesContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_condiciones);
+	public final OperacionesaritlogicasContext operacionesaritlogicas() throws RecognitionException {
+		OperacionesaritlogicasContext _localctx = new OperacionesaritlogicasContext(_ctx, getState());
+		enterRule(_localctx, 14, RULE_operacionesaritlogicas);
 		try {
 			setState(94);
 			_errHandler.sync(this);
@@ -637,7 +637,7 @@ public class idParser extends Parser {
 				setState(89);
 				match(OPERADORLOGICO);
 				setState(90);
-				condiciones();
+				operacionesaritlogicas();
 				}
 				break;
 			case 2:
@@ -667,8 +667,8 @@ public class idParser extends Parser {
 	public static class IwhileContext extends ParserRuleContext {
 		public TerminalNode IWHILE() { return getToken(idParser.IWHILE, 0); }
 		public TerminalNode PARENTESISA() { return getToken(idParser.PARENTESISA, 0); }
-		public CondicionesContext condiciones() {
-			return getRuleContext(CondicionesContext.class,0);
+		public OperacionesaritlogicasContext operacionesaritlogicas() {
+			return getRuleContext(OperacionesaritlogicasContext.class,0);
 		}
 		public TerminalNode PARENTESISC() { return getToken(idParser.PARENTESISC, 0); }
 		public BloqueContext bloque() {
@@ -704,7 +704,7 @@ public class idParser extends Parser {
 			setState(97);
 			match(PARENTESISA);
 			setState(98);
-			condiciones();
+			operacionesaritlogicas();
 			setState(99);
 			match(PARENTESISC);
 			setState(100);
@@ -728,8 +728,8 @@ public class idParser extends Parser {
 		public DeclaracionContext declaracion() {
 			return getRuleContext(DeclaracionContext.class,0);
 		}
-		public CondicionesContext condiciones() {
-			return getRuleContext(CondicionesContext.class,0);
+		public OperacionesaritlogicasContext operacionesaritlogicas() {
+			return getRuleContext(OperacionesaritlogicasContext.class,0);
 		}
 		public TerminalNode PUNTOCOMA() { return getToken(idParser.PUNTOCOMA, 0); }
 		public IteracionContext iteracion() {
@@ -771,7 +771,7 @@ public class idParser extends Parser {
 			setState(104);
 			declaracion();
 			setState(105);
-			condiciones();
+			operacionesaritlogicas();
 			setState(106);
 			match(PUNTOCOMA);
 			setState(107);

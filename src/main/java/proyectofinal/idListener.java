@@ -80,15 +80,15 @@ public interface idListener extends ParseTreeListener {
 	 */
 	void exitIif(idParser.IifContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link idParser#condiciones}.
+	 * Enter a parse tree produced by {@link idParser#operacionesaritlogicas}.
 	 * @param ctx the parse tree
 	 */
-	void enterCondiciones(idParser.CondicionesContext ctx);
+	void enterOperacionesaritlogicas(idParser.OperacionesaritlogicasContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link idParser#condiciones}.
+	 * Exit a parse tree produced by {@link idParser#operacionesaritlogicas}.
 	 * @param ctx the parse tree
 	 */
-	void exitCondiciones(idParser.CondicionesContext ctx);
+	void exitOperacionesaritlogicas(idParser.OperacionesaritlogicasContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link idParser#iwhile}.
 	 * @param ctx the parse tree

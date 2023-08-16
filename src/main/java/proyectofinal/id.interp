@@ -60,7 +60,7 @@ instrucciones
 instruccion
 bloque
 iif
-condiciones
+operacionesaritlogicas
 iwhile
 ifor
 iteracion

@@ -55,11 +55,11 @@ public interface idVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitIif(idParser.IifContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link idParser#condiciones}.
+	 * Visit a parse tree produced by {@link idParser#operacionesaritlogicas}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitCondiciones(idParser.CondicionesContext ctx);
+	T visitOperacionesaritlogicas(idParser.OperacionesaritlogicasContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link idParser#iwhile}.
 	 * @param ctx the parse tree

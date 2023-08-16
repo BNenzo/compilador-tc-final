@@ -45,7 +45,7 @@ instrucciones: instruccion instrucciones |;
 instruccion:
 	bloque
 	| iif
-	| condiciones
+	| operacionesaritlogicas
 	| declaracion
 	| asignacion
 	| declaracionFuncion
@@ -57,18 +57,19 @@ instruccion:
 bloque: LLAVEA instrucciones LLAVEC;
 
 // IF
-iif: IFF PARENTESISA condiciones PARENTESISC bloque;
-condiciones:
-	PALABRA COMP PALABRA OPERADORLOGICO condiciones
+iif: IFF PARENTESISA operacionesaritlogicas PARENTESISC bloque;
+operacionesaritlogicas:
+	PALABRA COMP PALABRA OPERADORLOGICO operacionesaritlogicas
 	| PALABRA COMP PALABRA;
 
 // WHILE
 
-iwhile: IWHILE PARENTESISA condiciones PARENTESISC bloque;
+iwhile:
+	IWHILE PARENTESISA operacionesaritlogicas PARENTESISC bloque;
 
 // FOR
 ifor:
-	IFOR PARENTESISA declaracion condiciones PUNTOCOMA iteracion PARENTESISC bloque;
+	IFOR PARENTESISA declaracion operacionesaritlogicas PUNTOCOMA iteracion PARENTESISC bloque;
 
 iteracion:
 	PALABRA (ITERACIONRESTA | ITERACIONSUMA) COMA iteracion

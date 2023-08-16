@@ -70,6 +70,56 @@ public interface idListener extends ParseTreeListener {
 	 */
 	void exitBloque(idParser.BloqueContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link idParser#iif}.
+	 * @param ctx the parse tree
+	 */
+	void enterIif(idParser.IifContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link idParser#iif}.
+	 * @param ctx the parse tree
+	 */
+	void exitIif(idParser.IifContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link idParser#condiciones}.
+	 * @param ctx the parse tree
+	 */
+	void enterCondiciones(idParser.CondicionesContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link idParser#condiciones}.
+	 * @param ctx the parse tree
+	 */
+	void exitCondiciones(idParser.CondicionesContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link idParser#iwhile}.
+	 * @param ctx the parse tree
+	 */
+	void enterIwhile(idParser.IwhileContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link idParser#iwhile}.
+	 * @param ctx the parse tree
+	 */
+	void exitIwhile(idParser.IwhileContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link idParser#ifor}.
+	 * @param ctx the parse tree
+	 */
+	void enterIfor(idParser.IforContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link idParser#ifor}.
+	 * @param ctx the parse tree
+	 */
+	void exitIfor(idParser.IforContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link idParser#iteracion}.
+	 * @param ctx the parse tree
+	 */
+	void enterIteracion(idParser.IteracionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link idParser#iteracion}.
+	 * @param ctx the parse tree
+	 */
+	void exitIteracion(idParser.IteracionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link idParser#declaracion}.
 	 * @param ctx the parse tree
 	 */

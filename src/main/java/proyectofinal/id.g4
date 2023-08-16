@@ -24,8 +24,14 @@ DIVISION: '/';
 EQ: '=';
 types: INT | FLOAT | CHAR;
 typesFunciones: types | VOID;
+IFF: 'if';
+IWHILE: 'while';
+IFOR: 'for';
 PALABRA: (LETRA | DIGITO)*;
-
+COMP: ('<' | '<=' | '==' | '>' | '>=' | '!=');
+OPERADORLOGICO: '&&' | '||';
+ITERACIONSUMA: '++';
+ITERACIONRESTA: '--';
 //ID: (LETRA | '_') (LETRA | DIGITO | '_')*; OTRO: .;
 
 //s:
@@ -38,16 +44,37 @@ instrucciones: instruccion instrucciones |;
 
 instruccion:
 	bloque
+	| iif
+	| condiciones
 	| declaracion
 	| asignacion
 	| declaracionFuncion
 	| llamadaFuncion
-	| defincionFuncion;
+	| defincionFuncion
+	| iwhile
+	| ifor;
 
 bloque: LLAVEA instrucciones LLAVEC;
 
+// IF
+iif: IFF PARENTESISA condiciones PARENTESISC bloque;
+condiciones:
+	PALABRA COMP PALABRA OPERADORLOGICO condiciones
+	| PALABRA COMP PALABRA;
+
+// WHILE
+
+iwhile: IWHILE PARENTESISA condiciones PARENTESISC bloque;
+
+// FOR
+ifor:
+	IFOR PARENTESISA declaracion condiciones PUNTOCOMA iteracion PARENTESISC bloque;
+
+iteracion:
+	PALABRA (ITERACIONRESTA | ITERACIONSUMA) COMA iteracion
+	| PALABRA (ITERACIONRESTA | ITERACIONSUMA);
 // DECLARACION 
-declaracion: types declarar;
+declaracion: types declararAsignacion;
 
 declarar: declararAsignacion | declararSinAsignacion;
 
@@ -92,3 +119,4 @@ parametrosConcatenados:
 defincionFuncion:
 	typesFunciones PALABRA PARENTESISA parametrosDeclaracionConcatenados PARENTESISC LLAVEA
 		instrucciones LLAVEC;
+

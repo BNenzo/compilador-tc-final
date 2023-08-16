@@ -49,6 +49,36 @@ public interface idVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBloque(idParser.BloqueContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link idParser#iif}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIif(idParser.IifContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link idParser#condiciones}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCondiciones(idParser.CondicionesContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link idParser#iwhile}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIwhile(idParser.IwhileContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link idParser#ifor}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIfor(idParser.IforContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link idParser#iteracion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIteracion(idParser.IteracionContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link idParser#declaracion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

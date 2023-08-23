@@ -883,8 +883,8 @@ public class idParser extends Parser {
 		public TypesContext types() {
 			return getRuleContext(TypesContext.class,0);
 		}
-		public DeclararAsignacionContext declararAsignacion() {
-			return getRuleContext(DeclararAsignacionContext.class,0);
+		public DeclararContext declarar() {
+			return getRuleContext(DeclararContext.class,0);
 		}
 		public DeclaracionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -914,7 +914,7 @@ public class idParser extends Parser {
 			setState(119);
 			types();
 			setState(120);
-			declararAsignacion();
+			declarar();
 			}
 		}
 		catch (RecognitionException re) {
@@ -1782,7 +1782,7 @@ public class idParser extends Parser {
 		"\2\2fg\5\f\7\2g\23\3\2\2\2hi\7\25\2\2ij\7\6\2\2jk\5\30\r\2kl\5\20\t\2"+
 		"lm\7\b\2\2mn\5\26\f\2no\7\7\2\2op\5\f\7\2p\25\3\2\2\2qr\7\26\2\2rs\t\3"+
 		"\2\2st\7\t\2\2tx\5\26\f\2uv\7\26\2\2vx\t\3\2\2wq\3\2\2\2wu\3\2\2\2x\27"+
-		"\3\2\2\2yz\5\2\2\2z{\5\34\17\2{\31\3\2\2\2|\177\5\34\17\2}\177\5\36\20"+
+		"\3\2\2\2yz\5\2\2\2z{\5\32\16\2{\31\3\2\2\2|\177\5\34\17\2}\177\5\36\20"+
 		"\2~|\3\2\2\2~}\3\2\2\2\177\33\3\2\2\2\u0080\u0081\7\26\2\2\u0081\u0082"+
 		"\7\22\2\2\u0082\u0083\7\26\2\2\u0083\u0084\7\t\2\2\u0084\u008a\5\32\16"+
 		"\2\u0085\u0086\7\26\2\2\u0086\u0087\7\22\2\2\u0087\u0088\7\26\2\2\u0088"+

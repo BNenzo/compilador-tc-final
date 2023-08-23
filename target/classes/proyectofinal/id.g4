@@ -75,7 +75,7 @@ iteracion:
 	PALABRA (ITERACIONRESTA | ITERACIONSUMA) COMA iteracion
 	| PALABRA (ITERACIONRESTA | ITERACIONSUMA);
 // DECLARACION 
-declaracion: types declararAsignacion;
+declaracion: types declarar;
 
 declarar: declararAsignacion | declararSinAsignacion;
 

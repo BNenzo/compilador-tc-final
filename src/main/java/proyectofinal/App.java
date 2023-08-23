@@ -26,11 +26,15 @@ public class App {
         // create a parser that feeds off the tokens buffer
         idParser parser = new idParser(tokens);
 
+        // create Listener
+        idBaseListener escucha = new MiListener(parser);
+        parser.addParseListener(escucha);
+
         // Solicito al parser que comience indicando una regla gramatical
         // En este caso la regla es el simbolo inicial
         // parser.s();
+        System.out.println("");
         ParseTree tree = parser.s();
-        // System.out.println("");
         System.out.println("");
         System.out.println(tree.toStringTree(parser));
         System.out.println("fin del programa");

@@ -145,6 +145,13 @@ public class idBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements idV
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitDeclaracionFuncion_Nombre(idParser.DeclaracionFuncion_NombreContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitDeclaracionFuncion(idParser.DeclaracionFuncionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
@@ -181,6 +188,20 @@ public class idBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements idV
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitParametrosConcatenados(idParser.ParametrosConcatenadosContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitNombreParametroFuncion(idParser.NombreParametroFuncionContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitParametrosDefinicionFuncion(idParser.ParametrosDefinicionFuncionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

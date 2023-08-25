@@ -32,6 +32,14 @@ public class MiId {
     this.funcion = false;
   }
 
+  public MiId(String _token, Boolean _inicializada, TipoDato _tipoDato, Boolean _usada, Boolean funcion) {
+    this.Token = _token;
+    this.tipoDato = _tipoDato;
+    this.Usada = _usada;
+    this.Inicializada = _inicializada;
+    this.funcion = funcion;
+  }
+
   public String getToken() {
     return this.Token;
   }

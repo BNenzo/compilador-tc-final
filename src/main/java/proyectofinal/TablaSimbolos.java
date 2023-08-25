@@ -34,6 +34,18 @@ public class TablaSimbolos {
     return alreadyExist;
   }
 
+  public void getTabla() {
+    for (int i = 0; i < contextosLogicos.size(); i++) {
+      List<MiId> idLista = new ArrayList<MiId>(contextosLogicos.get(i).values());
+      System.out.println("CONTEXTO " + i);
+      for (int j = 0; j < idLista.size(); j++) {
+        System.out.println(" TOKEN:" + idLista.get(j).getToken() + " - Inicializada: "
+            + idLista.get(j).getInicializada() + " - Tipo: " + idLista.get(j).getTipoDato() + " - Usada: "
+            + idLista.get(j).getUsada() + " - Funcion: " + idLista.get(j).getFuncion());
+      }
+    }
+  }
+
   public static TablaSimbolos getInstance() {
     if (tabla_instance == null)
       tabla_instance = new TablaSimbolos();

@@ -121,6 +121,12 @@ public interface idVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitOperadoresNumericos(idParser.OperadoresNumericosContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link idParser#declaracionFuncion_Nombre}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDeclaracionFuncion_Nombre(idParser.DeclaracionFuncion_NombreContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link idParser#declaracionFuncion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -156,6 +162,18 @@ public interface idVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitParametrosConcatenados(idParser.ParametrosConcatenadosContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link idParser#nombreParametroFuncion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNombreParametroFuncion(idParser.NombreParametroFuncionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link idParser#parametrosDefinicionFuncion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitParametrosDefinicionFuncion(idParser.ParametrosDefinicionFuncionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link idParser#defincionFuncion}.
 	 * @param ctx the parse tree

@@ -1,6 +1,6 @@
-{ 
+int funcion1 (int, int, int);
 
-    int x = 2, t;
-    int t;
 
-}
+int x = 2313, s;
+int test = 32;
+double probando = dasd;

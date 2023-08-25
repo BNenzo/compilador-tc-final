@@ -15,6 +15,7 @@ PUNTOCOMA: ';';
 COMA: ',';
 INT: 'int';
 FLOAT: 'float';
+DOUBLE: 'double';
 CHAR: 'char';
 VOID: 'void';
 SUMA: '+';
@@ -22,7 +23,7 @@ RESTA: '-';
 MULTIPLICACION: '*';
 DIVISION: '/';
 EQ: '=';
-types: INT | FLOAT | CHAR;
+types: INT | FLOAT | CHAR | DOUBLE;
 typesFunciones: types | VOID;
 IFF: 'if';
 IWHILE: 'while';
@@ -32,11 +33,11 @@ COMP: ('<' | '<=' | '==' | '>' | '>=' | '!=');
 OPERADORLOGICO: '&&' | '||';
 ITERACIONSUMA: '++';
 ITERACIONRESTA: '--';
-//ID: (LETRA | '_') (LETRA | DIGITO | '_')*; OTRO: .;
+
+//NOMBREVARIABLE: .* [a-zA-Z].*; ID: (LETRA | '_') (LETRA | DIGITO | '_')*; OTRO: .;
 
 //s:
-// ID { System.out.println("ID -> " + $ID.getText()); } s | OTRO { System.out.println("Otro -> " +
-// $OTRO.getText()); } s |;
+// NOMBREVARIABLE { System.out.println("NOMBREVARIABLE -> " + $NOMBREVARIABLE.getText()); } s |;
 
 s: instrucciones;
 
@@ -74,6 +75,7 @@ ifor:
 iteracion:
 	PALABRA (ITERACIONRESTA | ITERACIONSUMA) COMA iteracion
 	| PALABRA (ITERACIONRESTA | ITERACIONSUMA);
+
 // DECLARACION 
 declaracion: types declarar;
 
@@ -97,14 +99,19 @@ operadoresNumericos: SUMA | RESTA | MULTIPLICACION | DIVISION;
 
 // DECLARACION DE FUNCIONES
 
+declaracionFuncion_Nombre: PALABRA;
+
 declaracionFuncion:
-	typesFunciones PALABRA PARENTESISA parametrosDeclaracionConcatenados PARENTESISC PUNTOCOMA;
+	typesFunciones declaracionFuncion_Nombre PARENTESISA parametrosDeclaracionConcatenados
+		PARENTESISC PUNTOCOMA;
 
 parametrosDeclaracionConcatenados: parametrosFuncion |;
 
 parametrosFuncion:
 	types PALABRA COMA parametrosFuncion
-	| types PALABRA;
+	| types COMA parametrosFuncion
+	| types PALABRA
+	| types;
 
 // LLAMADA DE FUNCIONES
 llamadaFuncion:
@@ -117,7 +124,14 @@ parametrosConcatenados:
 	| PALABRA;
 
 // DEFINICION DE FUNCION
+nombreParametroFuncion: PALABRA;
+
+parametrosDefinicionFuncion:
+	types nombreParametroFuncion COMA parametrosDefinicionFuncion
+	| types nombreParametroFuncion
+	|;
+
 defincionFuncion:
-	typesFunciones PALABRA PARENTESISA parametrosDeclaracionConcatenados PARENTESISC LLAVEA
-		instrucciones LLAVEC;
+	typesFunciones PALABRA PARENTESISA parametrosDefinicionFuncion PARENTESISC LLAVEA instrucciones
+		LLAVEC;
 

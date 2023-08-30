@@ -270,13 +270,13 @@ public class idBaseListener implements idListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterParametrosFuncion(idParser.ParametrosFuncionContext ctx) { }
+	@Override public void enterDeclaracionFuncion_parametros(idParser.DeclaracionFuncion_parametrosContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitParametrosFuncion(idParser.ParametrosFuncionContext ctx) { }
+	@Override public void exitDeclaracionFuncion_parametros(idParser.DeclaracionFuncion_parametrosContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -318,25 +318,49 @@ public class idBaseListener implements idListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNombreParametroFuncion(idParser.NombreParametroFuncionContext ctx) { }
+	@Override public void enterDefinicionFuncion_parametro_nombre(idParser.DefinicionFuncion_parametro_nombreContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNombreParametroFuncion(idParser.NombreParametroFuncionContext ctx) { }
+	@Override public void exitDefinicionFuncion_parametro_nombre(idParser.DefinicionFuncion_parametro_nombreContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterParametrosDefinicionFuncion(idParser.ParametrosDefinicionFuncionContext ctx) { }
+	@Override public void enterDefinicionFuncion_Nombre(idParser.DefinicionFuncion_NombreContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitParametrosDefinicionFuncion(idParser.ParametrosDefinicionFuncionContext ctx) { }
+	@Override public void exitDefinicionFuncion_Nombre(idParser.DefinicionFuncion_NombreContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDefincionFuncion_parametros_global_rule(idParser.DefincionFuncion_parametros_global_ruleContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDefincionFuncion_parametros_global_rule(idParser.DefincionFuncion_parametros_global_ruleContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDefinicionFuncion_parametros_internal_rule(idParser.DefinicionFuncion_parametros_internal_ruleContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDefinicionFuncion_parametros_internal_rule(idParser.DefinicionFuncion_parametros_internal_ruleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

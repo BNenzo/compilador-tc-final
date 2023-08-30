@@ -105,11 +105,13 @@ declaracionFuncion:
 	typesFunciones declaracionFuncion_Nombre PARENTESISA parametrosDeclaracionConcatenados
 		PARENTESISC PUNTOCOMA;
 
-parametrosDeclaracionConcatenados: parametrosFuncion |;
+parametrosDeclaracionConcatenados:
+	declaracionFuncion_parametros
+	|;
 
-parametrosFuncion:
-	types PALABRA COMA parametrosFuncion
-	| types COMA parametrosFuncion
+declaracionFuncion_parametros:
+	types PALABRA COMA declaracionFuncion_parametros
+	| types COMA declaracionFuncion_parametros
 	| types PALABRA
 	| types;
 
@@ -124,14 +126,19 @@ parametrosConcatenados:
 	| PALABRA;
 
 // DEFINICION DE FUNCION
-nombreParametroFuncion: PALABRA;
+definicionFuncion_parametro_nombre: PALABRA;
 
-parametrosDefinicionFuncion:
-	types nombreParametroFuncion COMA parametrosDefinicionFuncion
-	| types nombreParametroFuncion
+definicionFuncion_Nombre: PALABRA;
+
+defincionFuncion_parametros_global_rule:
+	PARENTESISA definicionFuncion_parametros_internal_rule PARENTESISC;
+
+definicionFuncion_parametros_internal_rule:
+	types definicionFuncion_parametro_nombre COMA definicionFuncion_parametros_internal_rule
+	| types definicionFuncion_parametro_nombre
 	|;
 
 defincionFuncion:
-	typesFunciones PALABRA PARENTESISA parametrosDefinicionFuncion PARENTESISC LLAVEA instrucciones
-		LLAVEC;
+	typesFunciones definicionFuncion_Nombre defincionFuncion_parametros_global_rule LLAVEA
+		instrucciones LLAVEC;
 

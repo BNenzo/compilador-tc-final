@@ -139,11 +139,11 @@ public interface idVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitParametrosDeclaracionConcatenados(idParser.ParametrosDeclaracionConcatenadosContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link idParser#parametrosFuncion}.
+	 * Visit a parse tree produced by {@link idParser#declaracionFuncion_parametros}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitParametrosFuncion(idParser.ParametrosFuncionContext ctx);
+	T visitDeclaracionFuncion_parametros(idParser.DeclaracionFuncion_parametrosContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link idParser#llamadaFuncion}.
 	 * @param ctx the parse tree
@@ -163,17 +163,29 @@ public interface idVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitParametrosConcatenados(idParser.ParametrosConcatenadosContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link idParser#nombreParametroFuncion}.
+	 * Visit a parse tree produced by {@link idParser#definicionFuncion_parametro_nombre}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitNombreParametroFuncion(idParser.NombreParametroFuncionContext ctx);
+	T visitDefinicionFuncion_parametro_nombre(idParser.DefinicionFuncion_parametro_nombreContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link idParser#parametrosDefinicionFuncion}.
+	 * Visit a parse tree produced by {@link idParser#definicionFuncion_Nombre}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitParametrosDefinicionFuncion(idParser.ParametrosDefinicionFuncionContext ctx);
+	T visitDefinicionFuncion_Nombre(idParser.DefinicionFuncion_NombreContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link idParser#defincionFuncion_parametros_global_rule}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDefincionFuncion_parametros_global_rule(idParser.DefincionFuncion_parametros_global_ruleContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link idParser#definicionFuncion_parametros_internal_rule}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDefinicionFuncion_parametros_internal_rule(idParser.DefinicionFuncion_parametros_internal_ruleContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link idParser#defincionFuncion}.
 	 * @param ctx the parse tree

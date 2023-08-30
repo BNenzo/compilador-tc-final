@@ -46,6 +46,14 @@ public class TablaSimbolos {
     }
   }
 
+  public HashMap<String, MiId> getContextByIndex(int index) {
+    return contextosLogicos.get(index);
+  }
+
+  public boolean findTokenByContextIndex(String token, int index) {
+    return getContextByIndex(index).containsKey(token);
+  }
+
   public static TablaSimbolos getInstance() {
     if (tabla_instance == null)
       tabla_instance = new TablaSimbolos();

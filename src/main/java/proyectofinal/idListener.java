@@ -220,15 +220,15 @@ public interface idListener extends ParseTreeListener {
 	 */
 	void exitParametrosDeclaracionConcatenados(idParser.ParametrosDeclaracionConcatenadosContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link idParser#parametrosFuncion}.
+	 * Enter a parse tree produced by {@link idParser#declaracionFuncion_parametros}.
 	 * @param ctx the parse tree
 	 */
-	void enterParametrosFuncion(idParser.ParametrosFuncionContext ctx);
+	void enterDeclaracionFuncion_parametros(idParser.DeclaracionFuncion_parametrosContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link idParser#parametrosFuncion}.
+	 * Exit a parse tree produced by {@link idParser#declaracionFuncion_parametros}.
 	 * @param ctx the parse tree
 	 */
-	void exitParametrosFuncion(idParser.ParametrosFuncionContext ctx);
+	void exitDeclaracionFuncion_parametros(idParser.DeclaracionFuncion_parametrosContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link idParser#llamadaFuncion}.
 	 * @param ctx the parse tree
@@ -260,25 +260,45 @@ public interface idListener extends ParseTreeListener {
 	 */
 	void exitParametrosConcatenados(idParser.ParametrosConcatenadosContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link idParser#nombreParametroFuncion}.
+	 * Enter a parse tree produced by {@link idParser#definicionFuncion_parametro_nombre}.
 	 * @param ctx the parse tree
 	 */
-	void enterNombreParametroFuncion(idParser.NombreParametroFuncionContext ctx);
+	void enterDefinicionFuncion_parametro_nombre(idParser.DefinicionFuncion_parametro_nombreContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link idParser#nombreParametroFuncion}.
+	 * Exit a parse tree produced by {@link idParser#definicionFuncion_parametro_nombre}.
 	 * @param ctx the parse tree
 	 */
-	void exitNombreParametroFuncion(idParser.NombreParametroFuncionContext ctx);
+	void exitDefinicionFuncion_parametro_nombre(idParser.DefinicionFuncion_parametro_nombreContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link idParser#parametrosDefinicionFuncion}.
+	 * Enter a parse tree produced by {@link idParser#definicionFuncion_Nombre}.
 	 * @param ctx the parse tree
 	 */
-	void enterParametrosDefinicionFuncion(idParser.ParametrosDefinicionFuncionContext ctx);
+	void enterDefinicionFuncion_Nombre(idParser.DefinicionFuncion_NombreContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link idParser#parametrosDefinicionFuncion}.
+	 * Exit a parse tree produced by {@link idParser#definicionFuncion_Nombre}.
 	 * @param ctx the parse tree
 	 */
-	void exitParametrosDefinicionFuncion(idParser.ParametrosDefinicionFuncionContext ctx);
+	void exitDefinicionFuncion_Nombre(idParser.DefinicionFuncion_NombreContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link idParser#defincionFuncion_parametros_global_rule}.
+	 * @param ctx the parse tree
+	 */
+	void enterDefincionFuncion_parametros_global_rule(idParser.DefincionFuncion_parametros_global_ruleContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link idParser#defincionFuncion_parametros_global_rule}.
+	 * @param ctx the parse tree
+	 */
+	void exitDefincionFuncion_parametros_global_rule(idParser.DefincionFuncion_parametros_global_ruleContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link idParser#definicionFuncion_parametros_internal_rule}.
+	 * @param ctx the parse tree
+	 */
+	void enterDefinicionFuncion_parametros_internal_rule(idParser.DefinicionFuncion_parametros_internal_ruleContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link idParser#definicionFuncion_parametros_internal_rule}.
+	 * @param ctx the parse tree
+	 */
+	void exitDefinicionFuncion_parametros_internal_rule(idParser.DefinicionFuncion_parametros_internal_ruleContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link idParser#defincionFuncion}.
 	 * @param ctx the parse tree

@@ -166,7 +166,7 @@ public class idBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements idV
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitParametrosFuncion(idParser.ParametrosFuncionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitDeclaracionFuncion_parametros(idParser.DeclaracionFuncion_parametrosContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -194,14 +194,28 @@ public class idBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements idV
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitNombreParametroFuncion(idParser.NombreParametroFuncionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitDefinicionFuncion_parametro_nombre(idParser.DefinicionFuncion_parametro_nombreContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitParametrosDefinicionFuncion(idParser.ParametrosDefinicionFuncionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitDefinicionFuncion_Nombre(idParser.DefinicionFuncion_NombreContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitDefincionFuncion_parametros_global_rule(idParser.DefincionFuncion_parametros_global_ruleContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitDefinicionFuncion_parametros_internal_rule(idParser.DefinicionFuncion_parametros_internal_ruleContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

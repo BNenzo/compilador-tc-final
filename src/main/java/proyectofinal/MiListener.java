@@ -4,7 +4,7 @@ import java.util.*;
 import org.antlr.v4.runtime.tree.ErrorNode;
 
 public class MiListener extends idBaseListener {
-  private Boolean error;
+  private Boolean error = false;
   private TipoDato tipoDatoActual;
 
   private HashMap<String, List<MiId>> declaracionFuncionesStorage;
@@ -98,11 +98,23 @@ public class MiListener extends idBaseListener {
 
   @Override
   public void enterDefinicionFuncion_parametro_nombre(idParser.DefinicionFuncion_parametro_nombreContext ctx) {
-    List<MiId> parametros = declaracionFuncionesStorage.get(tokenTemporal);
-    if (!declaracionFuncionesStorage.containsKey(tokenTemporal) || parametros.size() == 0)
+    if (!declaracionFuncionesStorage.containsKey(tokenTemporal))
       return;
+    List<MiId> parametros = declaracionFuncionesStorage.get(tokenTemporal);
+    if (parametros.size() == 0)
+      return;
+
     System.out.println(ctx.getStart().getText());
     for (MiId parametro : parametros) {
+      // validar tipos de los parametros
+      if (parametro.getTipoDato() != tipoDatoActual) {
+        System.out.println(
+            "Semantic error - Invalid parameter type in function definition " + tokenTemporal
+                + " - Parameter type expected " + parametro.getTipoDato()
+                + " - received " + tipoDatoActual);
+        error = true;
+      }
+      // validar cantidad de parametros (mas parametros que declarados)
       if (!parametro.getInicializada()) {
         parametro.setInicializada(true);
         parametro.setToken(ctx.getStart().getText());
@@ -113,8 +125,6 @@ public class MiListener extends idBaseListener {
     System.out.println(
         "Semantic error - The definition of function " + tokenTemporal + " expect "
             + parametros.size() + " parameter/s");
-
-    // FALTA VALIDAR TIPOS
   }
 
   @Override

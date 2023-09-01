@@ -5,6 +5,6 @@ int funcion1 (int, int, int,int);
 
 
 
-int funcion1(int x1, int x2, int x3, int x4, int x5){
+int funcion1(float x1, int x2, int x3, int x4){
   int x = 2;
 }

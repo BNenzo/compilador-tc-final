@@ -1,10 +1,4 @@
-int funcion1 (int, int, int,int);
+dsadasda2
 
-
-
-
-
-
-int funcion1(float x1, int x2, int x3, int x4){
-  int x = 2;
-}
+2131341as
+123213a

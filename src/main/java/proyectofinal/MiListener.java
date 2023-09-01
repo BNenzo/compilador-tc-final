@@ -72,7 +72,9 @@ public class MiListener extends idBaseListener {
     declaracionFuncionesStorage.get(declaracionFuncionUltimoNombre).add(id);
   }
 
-  // TODO: INICILIZACION FUNCIONES
+  /* ---------------------------- DEFINICIONES --------------------------- */
+
+  // FUNCIONES
   @Override
   public void enterDefincionFuncion(idParser.DefincionFuncionContext ctx) {
     TablaSimbolos.getInstance().addContext();
@@ -129,7 +131,6 @@ public class MiListener extends idBaseListener {
 
   @Override
   public void exitDefincionFuncion_parametros_global_rule(idParser.DefincionFuncion_parametros_global_ruleContext ctx) {
-
     List<MiId> parametros = declaracionFuncionesStorage.get(tokenTemporal);
     for (MiId parametro : parametros) {
       if (!parametro.getInicializada()) {
@@ -147,22 +148,39 @@ public class MiListener extends idBaseListener {
 
   }
 
+  /* ---------------------------- LLAMADAS / USOS --------------------------- */
+
+  // FUNCIONES
+
+  @Override
+  public void enterLlamadaFuncion(idParser.LlamadaFuncionContext ctx) {
+    List<MiId> id = declaracionFuncionesStorage.get(ctx.getStart().getText());
+    if (id == null) {
+      System.out.println("Semantic error - Funcion " + ctx.getStart().getText() + " is not declared");
+      error = true;
+      return;
+    }
+    MiId funcionLlamada = TablaSimbolos.getInstance().getContextByIndex(0).get(ctx.getStart().getText());
+    funcionLlamada.setUsada(true);
+  }
+
   @Override
   public void exitS(idParser.SContext ctx) {
     if (error)
       return;
 
     TablaSimbolos.getInstance().getTabla();
-    for (Map.Entry<String, List<MiId>> entry : declaracionFuncionesStorage.entrySet()) {
-      String key = entry.getKey();
-      List<MiId> miIdList = entry.getValue();
-
-      System.out.println("Key: " + key);
-      for (MiId miId : miIdList) {
-        TipoDato nombre = miId.getTipoDato();
-        System.out.println("Nombre: " + nombre);
-      }
-    }
+    // for (Map.Entry<String, List<MiId>> entry :
+    // declaracionFuncionesStorage.entrySet()) {
+    // String key = entry.getKey();
+    // List<MiId> miIdList = entry.getValue();
+    //
+    // System.out.println("Key: " + key);
+    // for (MiId miId : miIdList) {
+    // TipoDato nombre = miId.getTipoDato();
+    // System.out.println("Nombre: " + nombre);
+    // }
+    // }
   }
 
   // UTILS

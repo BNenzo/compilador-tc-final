@@ -49,6 +49,12 @@ public interface idVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBloque(idParser.BloqueContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link idParser#var}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVar(idParser.VarContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link idParser#iif}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

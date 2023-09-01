@@ -33,7 +33,7 @@ COMP: ('<' | '<=' | '==' | '>' | '>=' | '!=');
 OPERADORLOGICO: '&&' | '||';
 ITERACIONSUMA: '++';
 ITERACIONRESTA: '--';
-
+VARIABLE: [a-zA-Z0-9]+;
 //NOMBREVARIABLE: .* [a-zA-Z].*; ID: (LETRA | '_') (LETRA | DIGITO | '_')*; OTRO: .;
 
 //s:
@@ -53,10 +53,12 @@ instruccion:
 	| llamadaFuncion
 	| defincionFuncion
 	| iwhile
-	| ifor;
+	| ifor
+	| var;
 
 bloque: LLAVEA instrucciones LLAVEC;
 
+var: VARIABLE;
 // IF
 iif: IFF PARENTESISA operacionesaritlogicas PARENTESISC bloque;
 operacionesaritlogicas:

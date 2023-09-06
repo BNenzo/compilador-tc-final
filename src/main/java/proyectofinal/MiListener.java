@@ -2,6 +2,8 @@ package proyectofinal;
 
 import java.util.*;
 import org.antlr.v4.runtime.tree.ErrorNode;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class MiListener extends idBaseListener {
   private Boolean error = false;
@@ -10,6 +12,8 @@ public class MiListener extends idBaseListener {
   private HashMap<String, List<MiId>> declaracionFuncionesStorage;
   private String declaracionFuncionUltimoNombre;
   private String tokenTemporal;
+  private boolean addContextFlag = true;
+  private Integer contextCount = 0;
 
   MiListener(idParser parser) {
     declaracionFuncionesStorage = new HashMap<String, List<MiId>>();
@@ -21,7 +25,21 @@ public class MiListener extends idBaseListener {
 
   @Override
   public void enterBloque(idParser.BloqueContext ctx) {
+    if (!addContextFlag) {
+      addContextFlag = true;
+      return;
+    }
+    contextCount++;
     TablaSimbolos.getInstance().addContext();
+  }
+
+  @Override
+  public void exitBloque(idParser.BloqueContext ctx) {
+    if (error)
+      return;
+
+    TablaSimbolos.getInstance().displayLastContextContent(contextCount);
+    TablaSimbolos.getInstance().removeLastContext();
   }
 
   // ---------------------------- TYPES ---------------------------
@@ -73,11 +91,12 @@ public class MiListener extends idBaseListener {
   }
 
   /* ---------------------------- DEFINICIONES --------------------------- */
-
   // FUNCIONES
   @Override
   public void enterDefincionFuncion(idParser.DefincionFuncionContext ctx) {
     TablaSimbolos.getInstance().addContext();
+    contextCount++;
+    addContextFlag = false;
   }
 
   @Override
@@ -148,6 +167,23 @@ public class MiListener extends idBaseListener {
 
   }
 
+  /* ---------------------------- ASIGNACIONES --------------------------- */
+
+  @Override
+  public void enterAsignacion(idParser.AsignacionContext ctx) {
+    String varibleAsignacion = ctx.getStart().getText();
+    if (!isValidVariableName(varibleAsignacion))
+      return;
+    MiId variableAsignacionId = TablaSimbolos.getInstance().searchId(varibleAsignacion);
+    if (variableAsignacionId == null) {
+      System.out.println("Semantic error - variable " + varibleAsignacion + " is not declared");
+      error = true;
+      return;
+    }
+    variableAsignacionId.setUsada(true);
+    variableAsignacionId.setInicializada(true);
+  }
+
   /* ---------------------------- LLAMADAS / USOS --------------------------- */
 
   // FUNCIONES
@@ -168,8 +204,10 @@ public class MiListener extends idBaseListener {
   public void exitS(idParser.SContext ctx) {
     if (error)
       return;
+    TablaSimbolos.getInstance().displayLastContextContent(0);
+    TablaSimbolos.getInstance().removeLastContext();
 
-    TablaSimbolos.getInstance().getTabla();
+    // TablaSimbolos.getInstance().getTabla();
     // for (Map.Entry<String, List<MiId>> entry :
     // declaracionFuncionesStorage.entrySet()) {
     // String key = entry.getKey();
@@ -181,6 +219,19 @@ public class MiListener extends idBaseListener {
     // System.out.println("Nombre: " + nombre);
     // }
     // }
+  }
+
+  // RULES
+
+  public boolean isValidVariableName(String variableName) {
+    Pattern pattern = Pattern.compile("[a-zA-Z]");
+    Matcher matcher = pattern.matcher(variableName);
+    boolean isValid = matcher.find();
+    if (!isValid) {
+      System.out.println("Semantic error - Variable " + variableName + " has to contain one letter at least.");
+      error = true;
+    }
+    return isValid;
   }
 
   // UTILS

@@ -70,16 +70,6 @@ public interface idListener extends ParseTreeListener {
 	 */
 	void exitBloque(idParser.BloqueContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link idParser#var}.
-	 * @param ctx the parse tree
-	 */
-	void enterVar(idParser.VarContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link idParser#var}.
-	 * @param ctx the parse tree
-	 */
-	void exitVar(idParser.VarContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link idParser#iif}.
 	 * @param ctx the parse tree
 	 */

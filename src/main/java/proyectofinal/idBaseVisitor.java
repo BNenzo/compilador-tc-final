@@ -61,13 +61,6 @@ public class idBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements idV
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitVar(idParser.VarContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
 	@Override public T visitIif(idParser.IifContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}

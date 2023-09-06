@@ -1,0 +1,45 @@
+DECLARACIONES:
+  variables: 
+    - Agregar ID, con tipo de dato y inicializada (caso con definicion) ✅
+    - Agregar ID, con tipo de dato  (caso sin definicion) ✅
+    - Validar nombre de funcion valido (sin solo numeros)
+    - Validar que la otra palabra en el caso de la asignacion, sea un char, float, integer, o una variable
+
+
+
+ASIGNACIONES: 
+  - Validar que el ID al que se asigna algo, tenga un nombre de variable valido ✅.
+  - Comprobar que dicho ID este declarado ✅.
+  - Actualizar token como inicializado. ✅
+
+
+
+LLAMADAS:
+
+
+USOS:
+
+
+
+FUNCIONES:
+  Declaracion:
+    - Agregar ID, con tipo de dato, y flag funcion. ✅
+    - Guardar Parametros de la funcion (mas que nada el tipo de dato del parametro). 🟡
+   
+
+  Definicion: 
+    - Validar que la funcion esta declarada en el contexto 0 🟡
+    - Actualizar la funcion como inicializada 🟡
+    - Comprobar que los parametros que se usan en la definicion coincidan con los parametros que se declaron (en tipo y cantidad) 🟡
+      -- Cantidad de menos 🟡
+      -- Cantidad de mas 🟡
+    - Validar que el tipo de la funcion declara coincida con el tipo de la funcion definida 🔴
+    - Agregar parametros al contexto (inicilaidazadas). 🟡
+    - Comprobar que el tipo de dato de lo que se retorna coincida con el tipo de dato de la funcion 🔴
+
+  llamada: 
+   - Validar que la funcion esta definida en el contexto 0. 🟡
+   - Marcar el token de tipo funcion como usada. 🟡
+   - Validar que la cantidad de parametros coincidan con la cantidad de parametros declarados. 🔴
+   - Validar que los tipos de las variables que se usan para llenar los parametros coincidan con los declarados.🔴
+     

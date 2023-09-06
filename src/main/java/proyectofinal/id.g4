@@ -33,7 +33,9 @@ COMP: ('<' | '<=' | '==' | '>' | '>=' | '!=');
 OPERADORLOGICO: '&&' | '||';
 ITERACIONSUMA: '++';
 ITERACIONRESTA: '--';
-VARIABLE: [a-zA-Z0-9]+;
+COMILLA: '"';
+PUNTO: '.';
+OTRO: . -> skip;
 //NOMBREVARIABLE: .* [a-zA-Z].*; ID: (LETRA | '_') (LETRA | DIGITO | '_')*; OTRO: .;
 
 //s:
@@ -53,13 +55,14 @@ instruccion:
 	| llamadaFuncion
 	| defincionFuncion
 	| iwhile
-	| ifor
-	| var;
+	| ifor;
 
 bloque: LLAVEA instrucciones LLAVEC;
 
-var: VARIABLE;
-// IF
+//variable_estricta: PALABRA; variable_de_uso: primitiva_char | primitiva_float | variable_programa;
+// variable_programa: PALABRA; primitiva_char: COMILLA PALABRA COMILLA; primitiva_float: PALABRA
+// PUNTO PALABRA;
+
 iif: IFF PARENTESISA operacionesaritlogicas PARENTESISC bloque;
 operacionesaritlogicas:
 	PALABRA COMP PALABRA OPERADORLOGICO operacionesaritlogicas
@@ -141,6 +144,5 @@ definicionFuncion_parametros_internal_rule:
 	|;
 
 defincionFuncion:
-	typesFunciones definicionFuncion_Nombre defincionFuncion_parametros_global_rule LLAVEA
-		instrucciones LLAVEC;
+	typesFunciones definicionFuncion_Nombre defincionFuncion_parametros_global_rule bloque;
 

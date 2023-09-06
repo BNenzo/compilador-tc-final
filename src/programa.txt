@@ -1,4 +1,14 @@
-dsadasda2
+int funcion();
+int s;
 
-2131341as
-123213a
+int funcio(int probando) {
+  int x = 3;
+  {
+    s= 2;
+    x = 213;
+    {
+      int t = 9;
+    }
+  }
+}
+

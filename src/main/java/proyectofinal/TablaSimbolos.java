@@ -46,12 +46,46 @@ public class TablaSimbolos {
     }
   }
 
+  public void displayLastContextContent(Integer contextIndex) {
+    List<MiId> context = new ArrayList<MiId>(getLastContext().values());
+    System.out.println("");
+    System.out.println("CONTEXTO");
+    for (int j = 0; j < context.size(); j++) {
+      System.out.println(" TOKEN:" + context.get(j).getToken() + " - Inicializada: "
+          + context.get(j).getInicializada() + " - Tipo: " + context.get(j).getTipoDato() + " - Usada: "
+          + context.get(j).getUsada() + " - Funcion: " + context.get(j).getFuncion());
+    }
+  }
+
+  public void removeLastContext() {
+    if (contextosLogicos.size() > 0) {
+      contextosLogicos.remove(getContextosLogicosSize() - 1);
+    }
+  }
+
   public HashMap<String, MiId> getContextByIndex(int index) {
     return contextosLogicos.get(index);
   }
 
+  public HashMap<String, MiId> getLastContext() {
+    return contextosLogicos.get(contextosLogicos.size() - 1);
+  }
+
   public boolean findTokenByContextIndex(String token, int index) {
     return getContextByIndex(index).containsKey(token);
+  }
+
+  public Integer getContextosLogicosSize() {
+    return contextosLogicos.size();
+  }
+
+  public MiId searchId(String idForSearch) {
+    for (int i = getContextosLogicosSize() - 1; i >= 0; i--) {
+      MiId id = getContextByIndex(i).get(idForSearch);
+      if (id != null)
+        return id;
+    }
+    return null;
   }
 
   public static TablaSimbolos getInstance() {

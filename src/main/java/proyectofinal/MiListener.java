@@ -124,11 +124,9 @@ public class MiListener extends idBaseListener {
     List<MiId> parametros = declaracionFuncionesStorage.get(tokenTemporal);
     if (parametros.size() == 0)
       return;
-
-    System.out.println(ctx.getStart().getText());
     for (MiId parametro : parametros) {
       // validar tipos de los parametros
-      if (parametro.getTipoDato() != tipoDatoActual) {
+      if (parametro.getTipoDato() != tipoDatoActual && !parametro.getInicializada()) {
         System.out.println(
             "Semantic error - Invalid parameter type in function definition " + tokenTemporal
                 + " - Parameter type expected " + parametro.getTipoDato()

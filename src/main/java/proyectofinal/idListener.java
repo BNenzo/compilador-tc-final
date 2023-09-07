@@ -10,26 +10,6 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface idListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link idParser#types}.
-	 * @param ctx the parse tree
-	 */
-	void enterTypes(idParser.TypesContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link idParser#types}.
-	 * @param ctx the parse tree
-	 */
-	void exitTypes(idParser.TypesContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link idParser#typesFunciones}.
-	 * @param ctx the parse tree
-	 */
-	void enterTypesFunciones(idParser.TypesFuncionesContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link idParser#typesFunciones}.
-	 * @param ctx the parse tree
-	 */
-	void exitTypesFunciones(idParser.TypesFuncionesContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link idParser#s}.
 	 * @param ctx the parse tree
 	 */
@@ -69,6 +49,26 @@ public interface idListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitBloque(idParser.BloqueContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link idParser#types}.
+	 * @param ctx the parse tree
+	 */
+	void enterTypes(idParser.TypesContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link idParser#types}.
+	 * @param ctx the parse tree
+	 */
+	void exitTypes(idParser.TypesContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link idParser#typesFunciones}.
+	 * @param ctx the parse tree
+	 */
+	void enterTypesFunciones(idParser.TypesFuncionesContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link idParser#typesFunciones}.
+	 * @param ctx the parse tree
+	 */
+	void exitTypesFunciones(idParser.TypesFuncionesContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link idParser#iif}.
 	 * @param ctx the parse tree

@@ -23,8 +23,6 @@ RESTA: '-';
 MULTIPLICACION: '*';
 DIVISION: '/';
 EQ: '=';
-types: INT | FLOAT | CHAR | DOUBLE;
-typesFunciones: types | VOID;
 IFF: 'if';
 IWHILE: 'while';
 IFOR: 'for';
@@ -59,6 +57,8 @@ instruccion:
 
 bloque: LLAVEA instrucciones LLAVEC;
 
+types: INT | FLOAT | CHAR | DOUBLE;
+typesFunciones: INT | FLOAT | CHAR | DOUBLE | VOID;
 //variable_estricta: PALABRA; variable_de_uso: primitiva_char | primitiva_float | variable_programa;
 // variable_programa: PALABRA; primitiva_char: COMILLA PALABRA COMILLA; primitiva_float: PALABRA
 // PUNTO PALABRA;

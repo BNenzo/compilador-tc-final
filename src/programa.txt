@@ -1,14 +1,6 @@
-int funcion();
-int s;
+int funcion(int, int, float);
 
-int funcio(int probando) {
-  int x = 3;
-  {
-    s= 2;
-    x = 213;
-    {
-      int t = 9;
-    }
-  }
+int funcion(int probando, int probando2, float probando3) {
+
 }
 

@@ -13,18 +13,6 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface idVisitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by {@link idParser#types}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTypes(idParser.TypesContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link idParser#typesFunciones}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTypesFunciones(idParser.TypesFuncionesContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link idParser#s}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -48,6 +36,18 @@ public interface idVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitBloque(idParser.BloqueContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link idParser#types}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTypes(idParser.TypesContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link idParser#typesFunciones}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTypesFunciones(idParser.TypesFuncionesContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link idParser#iif}.
 	 * @param ctx the parse tree

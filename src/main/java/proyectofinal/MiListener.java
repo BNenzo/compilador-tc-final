@@ -102,14 +102,15 @@ public class MiListener extends idBaseListener {
   @Override
   public void enterDefinicionFuncion_Nombre(idParser.DefinicionFuncion_NombreContext ctx) {
     String token = ctx.getStart().getText();
+    tokenTemporal = token;
     if (!TablaSimbolos.getInstance().findTokenByContextIndex(token, 0)) {
+      error = true;
       System.out.println(
           "Semantic error - the token function: '" + token + "' is not declared on global context");
       return;
     }
     MiId id = TablaSimbolos.getInstance().getContextByIndex(0).get(token);
     id.setInicializada(true);
-    tokenTemporal = token;
   }
 
   @Override
@@ -119,9 +120,10 @@ public class MiListener extends idBaseListener {
 
   @Override
   public void enterDefinicionFuncion_parametro_nombre(idParser.DefinicionFuncion_parametro_nombreContext ctx) {
-    if (!declaracionFuncionesStorage.containsKey(tokenTemporal))
-      return;
+    // tokenTemporal seteado en enterDefinicionFuncion_Nombre
     List<MiId> parametros = declaracionFuncionesStorage.get(tokenTemporal);
+    if (parametros == null)
+      return;
     if (parametros.size() == 0)
       return;
     for (MiId parametro : parametros) {
@@ -149,6 +151,8 @@ public class MiListener extends idBaseListener {
   @Override
   public void exitDefincionFuncion_parametros_global_rule(idParser.DefincionFuncion_parametros_global_ruleContext ctx) {
     List<MiId> parametros = declaracionFuncionesStorage.get(tokenTemporal);
+    if (parametros == null)
+      return;
     for (MiId parametro : parametros) {
       if (!parametro.getInicializada()) {
         System.out.println(

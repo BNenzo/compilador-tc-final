@@ -1,6 +1,8 @@
-int funcion(int, int, float);
+int funcion(int, float, float);
 
-int funcion(int probando, int probando2, float probando3) {
+
+funcion(2,3,3);
+
+int funcion(int probando, float probando2, float probando3) {
 
 }
-

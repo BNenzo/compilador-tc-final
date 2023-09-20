@@ -27,6 +27,7 @@ IFF: 'if';
 IWHILE: 'while';
 IFOR: 'for';
 PALABRA: (LETRA | DIGITO)*;
+FLOAT_VARIABLE: PALABRA '.' PALABRA;
 COMP: ('<' | '<=' | '==' | '>' | '>=' | '!=');
 OPERADORLOGICO: '&&' | '||';
 ITERACIONSUMA: '++';
@@ -63,6 +64,12 @@ typesFunciones: INT | FLOAT | CHAR | DOUBLE | VOID;
 // variable_programa: PALABRA; primitiva_char: COMILLA PALABRA COMILLA; primitiva_float: PALABRA
 // PUNTO PALABRA;
 
+permutacion_variables:
+	PALABRA
+	| COMILLA PALABRA COMILLA
+	| FLOAT_VARIABLE;
+permutacion_variable_validar_tipo: permutacion_variables;
+
 iif: IFF PARENTESISA operacionesaritlogicas PARENTESISC bloque;
 operacionesaritlogicas:
 	PALABRA COMP PALABRA OPERADORLOGICO operacionesaritlogicas
@@ -87,8 +94,8 @@ declaracion: types declarar;
 declarar: declararAsignacion | declararSinAsignacion;
 
 declararAsignacion:
-	PALABRA EQ PALABRA COMA declarar
-	| PALABRA EQ PALABRA PUNTOCOMA;
+	PALABRA EQ permutacion_variable_validar_tipo COMA declarar
+	| PALABRA EQ permutacion_variable_validar_tipo PUNTOCOMA;
 
 declararSinAsignacion:
 	PALABRA COMA declarar
@@ -96,9 +103,12 @@ declararSinAsignacion:
 
 //ASIGNACION
 
-asignacion: PALABRA EQ PALABRA operaciones PUNTOCOMA;
+asignacion:
+	PALABRA EQ permutacion_variable_validar_tipo operaciones PUNTOCOMA;
 
-operaciones: operadoresNumericos PALABRA operaciones |;
+operaciones:
+	operadoresNumericos permutacion_variable_validar_tipo operaciones
+	|;
 
 operadoresNumericos: SUMA | RESTA | MULTIPLICACION | DIVISION;
 

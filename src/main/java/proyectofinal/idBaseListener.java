@@ -90,6 +90,30 @@ public class idBaseListener implements idListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterPermutacion_variables(idParser.Permutacion_variablesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPermutacion_variables(idParser.Permutacion_variablesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterPermutacion_variable_validar_tipo(idParser.Permutacion_variable_validar_tipoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPermutacion_variable_validar_tipo(idParser.Permutacion_variable_validar_tipoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterIif(idParser.IifContext ctx) { }
 	/**
 	 * {@inheritDoc}

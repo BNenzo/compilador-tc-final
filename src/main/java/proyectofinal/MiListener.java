@@ -14,6 +14,8 @@ public class MiListener extends idBaseListener {
   private String tokenTemporal;
   private boolean addContextFlag = true;
   private Integer contextCount = 0;
+  private Integer aux_parameterCount = 0;
+  private MiId aux_id = new MiId();
 
   MiListener(idParser parser) {
     declaracionFuncionesStorage = new HashMap<String, List<MiId>>();
@@ -62,6 +64,7 @@ public class MiListener extends idBaseListener {
     String token = ctx.getStart().getText();
     MiId id = new MiId(token, true, this.tipoDatoActual, false, false);
     TablaSimbolos.getInstance().addId(id);
+    tokenTemporal = token;
   }
 
   @Override
@@ -69,6 +72,7 @@ public class MiListener extends idBaseListener {
     String token = ctx.getStart().getText();
     MiId id = new MiId(token, false, this.tipoDatoActual, false, false);
     TablaSimbolos.getInstance().addId(id);
+    tokenTemporal = token;
   }
 
   // Funciones
@@ -110,6 +114,13 @@ public class MiListener extends idBaseListener {
       return;
     }
     MiId id = TablaSimbolos.getInstance().getContextByIndex(0).get(token);
+    if (!id.getTipoDato().equals(tipoDatoActual)) {
+      error = true;
+      System.out.println(
+          "Semantic error - the token function: '" + token + "' is declared like " + id.getTipoDato()
+              + " on global context and you use " + tipoDatoActual);
+      return;
+    }
     id.setInicializada(true);
   }
 
@@ -182,6 +193,7 @@ public class MiListener extends idBaseListener {
       error = true;
       return;
     }
+    tokenTemporal = varibleAsignacion;
     variableAsignacionId.setUsada(true);
     variableAsignacionId.setInicializada(true);
   }
@@ -192,14 +204,34 @@ public class MiListener extends idBaseListener {
 
   @Override
   public void enterLlamadaFuncion(idParser.LlamadaFuncionContext ctx) {
-    List<MiId> id = declaracionFuncionesStorage.get(ctx.getStart().getText());
+    String nombreFuncion = ctx.getStart().getText();
+    tokenTemporal = nombreFuncion;
+    List<MiId> id = declaracionFuncionesStorage.get(nombreFuncion);
     if (id == null) {
-      System.out.println("Semantic error - Funcion " + ctx.getStart().getText() + " is not declared");
+      System.out.println("Semantic error - Funcion " + nombreFuncion + " is not declared");
       error = true;
       return;
     }
-    MiId funcionLlamada = TablaSimbolos.getInstance().getContextByIndex(0).get(ctx.getStart().getText());
+    MiId funcionLlamada = TablaSimbolos.getInstance().getContextByIndex(0).get(nombreFuncion);
     funcionLlamada.setUsada(true);
+
+  }
+
+  @Override
+  public void enterParametrosConcatenados(idParser.ParametrosConcatenadosContext ctx) {
+    aux_parameterCount++;
+  }
+
+  @Override
+  public void exitParametrosLlamadaFuncion(idParser.ParametrosLlamadaFuncionContext ctx) {
+    // tokenTemporal seteado en enterLlamadaFuncion
+    int cantidadParametrosEsperados = declaracionFuncionesStorage.get(tokenTemporal).size();
+    if (aux_parameterCount == cantidadParametrosEsperados)
+      return;
+    error = true;
+    System.out.println("Semantic error - Funcion " + tokenTemporal + " receive " + aux_parameterCount + " and expects "
+        + cantidadParametrosEsperados + " parameters");
+    return;
   }
 
   @Override
@@ -226,14 +258,47 @@ public class MiListener extends idBaseListener {
   // RULES
 
   public boolean isValidVariableName(String variableName) {
-    Pattern pattern = Pattern.compile("[a-zA-Z]");
-    Matcher matcher = pattern.matcher(variableName);
-    boolean isValid = matcher.find();
+    boolean isValid = isVariable(variableName);
     if (!isValid) {
       System.out.println("Semantic error - Variable " + variableName + " has to contain one letter at least.");
       error = true;
     }
     return isValid;
+  }
+
+  @Override
+  public void enterPermutacion_variables(idParser.Permutacion_variablesContext ctx) {
+    String token = ctx.getStart().getText();
+    if (isVariable(token)) {
+      MiId id = TablaSimbolos.getInstance().searchId(token);
+      if (id == null) {
+        System.out.println("Semantic error - Variable " + token + " is not declared");
+        error = true;
+        return;
+      }
+      id.setUsada(true);
+      aux_id.setTipoDato(id.getTipoDato());
+      return;
+    }
+    if (isInt(token)) {
+      aux_id.setTipoDato(TipoDato.INT);
+      return;
+    }
+
+    if (isFloat(token)) {
+      aux_id.setTipoDato(TipoDato.FLOAT);
+      return;
+    }
+  }
+
+  @Override
+  public void exitPermutacion_variable_validar_tipo(idParser.Permutacion_variable_validar_tipoContext ctx) {
+    MiId token = TablaSimbolos.getInstance().searchId(tokenTemporal);
+    if (token.getTipoDato() != aux_id.getTipoDato() && aux_id.getTipoDato() != TipoDato.UNDEFINED) {
+      System.out.println("Semantic error - Wrong type, expect " + token.getTipoDato() + " type.");
+      error = true;
+    }
+
   }
 
   // UTILS
@@ -246,6 +311,31 @@ public class MiListener extends idBaseListener {
     if (token.equals("double"))
       return TipoDato.DOUBLE;
     return TipoDato.UNDEFINED;
+  }
+
+  public boolean isFloat(String str) {
+    try {
+      Float.parseFloat(str);
+      return true;
+    } catch (NumberFormatException e) {
+      return false;
+    }
+  }
+
+  public boolean isInt(String str) {
+    try {
+      Integer.parseInt(str);
+      return true;
+    } catch (NumberFormatException er) {
+      return false;
+    }
+  }
+
+  public boolean isVariable(String str) {
+    Pattern pattern = Pattern.compile("[a-zA-Z]");
+    Matcher matcher = pattern.matcher(str);
+    boolean isValid = matcher.find();
+    return isValid;
   }
 
 }

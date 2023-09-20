@@ -70,6 +70,26 @@ public interface idListener extends ParseTreeListener {
 	 */
 	void exitTypesFunciones(idParser.TypesFuncionesContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link idParser#permutacion_variables}.
+	 * @param ctx the parse tree
+	 */
+	void enterPermutacion_variables(idParser.Permutacion_variablesContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link idParser#permutacion_variables}.
+	 * @param ctx the parse tree
+	 */
+	void exitPermutacion_variables(idParser.Permutacion_variablesContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link idParser#permutacion_variable_validar_tipo}.
+	 * @param ctx the parse tree
+	 */
+	void enterPermutacion_variable_validar_tipo(idParser.Permutacion_variable_validar_tipoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link idParser#permutacion_variable_validar_tipo}.
+	 * @param ctx the parse tree
+	 */
+	void exitPermutacion_variable_validar_tipo(idParser.Permutacion_variable_validar_tipoContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link idParser#iif}.
 	 * @param ctx the parse tree
 	 */

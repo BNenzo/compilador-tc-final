@@ -1,8 +1,3 @@
-int funcion(int, float, float);
+float t = 3.312;
 
-
-funcion(2,3,3);
-
-int funcion(int probando, float probando2, float probando3) {
-
-}
+t = 23.3213 + 1.0;

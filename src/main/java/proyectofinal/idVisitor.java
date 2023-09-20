@@ -49,6 +49,18 @@ public interface idVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitTypesFunciones(idParser.TypesFuncionesContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link idParser#permutacion_variables}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPermutacion_variables(idParser.Permutacion_variablesContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link idParser#permutacion_variable_validar_tipo}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPermutacion_variable_validar_tipo(idParser.Permutacion_variable_validar_tipoContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link idParser#iif}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

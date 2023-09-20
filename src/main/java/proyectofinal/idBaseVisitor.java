@@ -61,6 +61,20 @@ public class idBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements idV
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitPermutacion_variables(idParser.Permutacion_variablesContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitPermutacion_variable_validar_tipo(idParser.Permutacion_variable_validar_tipoContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitIif(idParser.IifContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}

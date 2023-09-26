@@ -17,8 +17,11 @@ public class MiListener extends idBaseListener {
   private Integer aux_parameterCount = 0;
   private MiId aux_id = new MiId();
 
+  private List<TipoDato> listaTipoDatos;
+
   MiListener(idParser parser) {
     declaracionFuncionesStorage = new HashMap<String, List<MiId>>();
+    listaTipoDatos = new ArrayList<TipoDato>();
   }
 
   public Boolean getError() {
@@ -232,6 +235,72 @@ public class MiListener extends idBaseListener {
     System.out.println("Semantic error - Funcion " + tokenTemporal + " receive " + aux_parameterCount + " and expects "
         + cantidadParametrosEsperados + " parameters");
     return;
+  }
+
+  // OPERACION ARITMETICA LOGICAS
+  @Override
+  public void enterOperacionaritlogicas_variable(idParser.Operacionaritlogicas_variableContext ctx) {
+    String token = ctx.getStart().getText();
+    if (isVariable(token)) {
+      MiId id = TablaSimbolos.getInstance().searchId(token);
+      if (id == null) {
+        System.out.println("Semantic error - Variable " + token + " is not declared");
+        error = true;
+        return;
+      }
+      id.setUsada(true);
+      listaTipoDatos.add(id.getTipoDato());
+      return;
+    }
+    if (isInt(token)) {
+      listaTipoDatos.add(TipoDato.INT);
+
+      return;
+    }
+    if (isFloat(token)) {
+      listaTipoDatos.add(TipoDato.FLOAT);
+      return;
+    }
+  }
+
+  @Override
+  public void exitOperacionaritlogicas_comparacion(idParser.Operacionaritlogicas_comparacionContext ctx) {
+    int iteracion = 1;
+    TipoDato tipoDatoPrev = TipoDato.UNDEFINED;
+    for (TipoDato tipoDato : listaTipoDatos) {
+      if (iteracion % 2 != 0) {
+        tipoDatoPrev = tipoDato;
+      }
+      if (iteracion % 2 == 0 && tipoDatoPrev != tipoDato) {
+        System.out.println("Semantic error - You are trying to compare " + tipoDatoPrev + " with " + tipoDato);
+        error = true;
+        listaTipoDatos.clear();
+        return;
+      }
+      iteracion++;
+    }
+  }
+
+  /* ---------------------------- FOR --------------------------- */
+
+  @Override
+  public void enterIfor(idParser.IforContext ctx) {
+    TablaSimbolos.getInstance().addContext();
+    contextCount++;
+    addContextFlag = false;
+  }
+
+  @Override
+  public void enterIfor_iteracion(idParser.Ifor_iteracionContext ctx) {
+    String token = ctx.getStart().getText();
+    if (isValidVariableName(token)) {
+      MiId id = TablaSimbolos.getInstance().searchId(token);
+      if (id == null) {
+        System.out.println("Semantic error - Variable " + token + " is not declared");
+        error = true;
+        return;
+      }
+    }
   }
 
   @Override

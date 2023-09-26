@@ -71,9 +71,20 @@ permutacion_variables:
 permutacion_variable_validar_tipo: permutacion_variables;
 
 iif: IFF PARENTESISA operacionesaritlogicas PARENTESISC bloque;
+
+// OPERACIONES ARIT LOGICAS
+
+operacionaritlogicas_variable:
+	PALABRA
+	| COMILLA PALABRA COMILLA
+	| FLOAT_VARIABLE;
+
+operacionaritlogicas_comparacion:
+	operacionaritlogicas_variable COMP operacionaritlogicas_variable;
+
 operacionesaritlogicas:
-	PALABRA COMP PALABRA OPERADORLOGICO operacionesaritlogicas
-	| PALABRA COMP PALABRA;
+	operacionaritlogicas_comparacion OPERADORLOGICO operacionesaritlogicas
+	| operacionaritlogicas_comparacion;
 
 // WHILE
 
@@ -82,10 +93,10 @@ iwhile:
 
 // FOR
 ifor:
-	IFOR PARENTESISA declaracion operacionesaritlogicas PUNTOCOMA iteracion PARENTESISC bloque;
+	IFOR PARENTESISA declaracion operacionesaritlogicas PUNTOCOMA ifor_iteracion PARENTESISC bloque;
 
-iteracion:
-	PALABRA (ITERACIONRESTA | ITERACIONSUMA) COMA iteracion
+ifor_iteracion:
+	PALABRA (ITERACIONRESTA | ITERACIONSUMA) COMA ifor_iteracion
 	| PALABRA (ITERACIONRESTA | ITERACIONSUMA);
 
 // DECLARACION 

@@ -100,6 +100,26 @@ public interface idListener extends ParseTreeListener {
 	 */
 	void exitIif(idParser.IifContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link idParser#operacionaritlogicas_variable}.
+	 * @param ctx the parse tree
+	 */
+	void enterOperacionaritlogicas_variable(idParser.Operacionaritlogicas_variableContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link idParser#operacionaritlogicas_variable}.
+	 * @param ctx the parse tree
+	 */
+	void exitOperacionaritlogicas_variable(idParser.Operacionaritlogicas_variableContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link idParser#operacionaritlogicas_comparacion}.
+	 * @param ctx the parse tree
+	 */
+	void enterOperacionaritlogicas_comparacion(idParser.Operacionaritlogicas_comparacionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link idParser#operacionaritlogicas_comparacion}.
+	 * @param ctx the parse tree
+	 */
+	void exitOperacionaritlogicas_comparacion(idParser.Operacionaritlogicas_comparacionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link idParser#operacionesaritlogicas}.
 	 * @param ctx the parse tree
 	 */
@@ -130,15 +150,15 @@ public interface idListener extends ParseTreeListener {
 	 */
 	void exitIfor(idParser.IforContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link idParser#iteracion}.
+	 * Enter a parse tree produced by {@link idParser#ifor_iteracion}.
 	 * @param ctx the parse tree
 	 */
-	void enterIteracion(idParser.IteracionContext ctx);
+	void enterIfor_iteracion(idParser.Ifor_iteracionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link idParser#iteracion}.
+	 * Exit a parse tree produced by {@link idParser#ifor_iteracion}.
 	 * @param ctx the parse tree
 	 */
-	void exitIteracion(idParser.IteracionContext ctx);
+	void exitIfor_iteracion(idParser.Ifor_iteracionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link idParser#declaracion}.
 	 * @param ctx the parse tree

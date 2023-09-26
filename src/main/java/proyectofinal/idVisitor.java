@@ -67,6 +67,18 @@ public interface idVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitIif(idParser.IifContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link idParser#operacionaritlogicas_variable}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOperacionaritlogicas_variable(idParser.Operacionaritlogicas_variableContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link idParser#operacionaritlogicas_comparacion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOperacionaritlogicas_comparacion(idParser.Operacionaritlogicas_comparacionContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link idParser#operacionesaritlogicas}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -85,11 +97,11 @@ public interface idVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitIfor(idParser.IforContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link idParser#iteracion}.
+	 * Visit a parse tree produced by {@link idParser#ifor_iteracion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitIteracion(idParser.IteracionContext ctx);
+	T visitIfor_iteracion(idParser.Ifor_iteracionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link idParser#declaracion}.
 	 * @param ctx the parse tree

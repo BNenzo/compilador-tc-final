@@ -126,6 +126,30 @@ public class idBaseListener implements idListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterOperacionaritlogicas_variable(idParser.Operacionaritlogicas_variableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOperacionaritlogicas_variable(idParser.Operacionaritlogicas_variableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOperacionaritlogicas_comparacion(idParser.Operacionaritlogicas_comparacionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOperacionaritlogicas_comparacion(idParser.Operacionaritlogicas_comparacionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterOperacionesaritlogicas(idParser.OperacionesaritlogicasContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -162,13 +186,13 @@ public class idBaseListener implements idListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIteracion(idParser.IteracionContext ctx) { }
+	@Override public void enterIfor_iteracion(idParser.Ifor_iteracionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIteracion(idParser.IteracionContext ctx) { }
+	@Override public void exitIfor_iteracion(idParser.Ifor_iteracionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
